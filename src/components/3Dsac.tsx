@@ -4,15 +4,21 @@ import { useEffect, useRef, useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ChevronLeft, ChevronRight, ExternalLink, Calendar, Sparkles } from 'lucide-react';
 
-import px from '../assets/5/px.jpg';
-import nx from '../assets/5/nx.jpg';
-import py from '../assets/5/py.jpg';
-import ny from '../assets/5/ny.jpg';
-import pz from '../assets/5/pz.jpg';
-import nz from '../assets/5/nz.jpg';
+import px from '../assets/5/px.webp';
+import nx from '../assets/5/nx.webp';
+import py from '../assets/5/py.webp';
+import ny from '../assets/5/ny.webp';
+import pz from '../assets/5/pz.webp';
+import nz from '../assets/5/nz.webp';
 
-import orientationImg from '../assets/orientation.jpg';
-
+import orientationImg from '../assets/orientation.webp';
+import clawclashImg from '../assets/clawclash.webp';
+import coreteam from '../assets/coreteam.webp';
+import ucrlife from '../assets/ucrlife.webp';
+import hardware from '../assets/hardware.webp';
+import software from '../assets/software.webp';
+import robosoccer from '../assets/robosoccer.webp'
+import rcplane from '../assets/rcplane.webp'
 interface EventCardItem {
     id: string;
     title: string;
@@ -42,8 +48,6 @@ const Sac = () => {
     // References to DOM elements for 60fps transform updating without React re-renders
     const clusterHeaderRefs = useRef<(HTMLDivElement | null)[]>([]);
     const cardElementRefs = useRef<Map<string, HTMLDivElement>>(new Map());
-// Ref to track which cards have already animated
-const animatedRefs = useRef<Set<string>>(new Set());
 
     // Orbit controls reference to allow programmatic rotation with < and > buttons
     const controlsRef = useRef<OrbitControls | null>(null);
@@ -61,17 +65,25 @@ const animatedRefs = useRef<Set<string>>(new Set());
     const handlePointerMove = (e: React.PointerEvent) => {
         const dx = e.clientX - pointerStartRef.current.x;
         const dy = e.clientY - pointerStartRef.current.y;
-        if (Math.hypot(dx, dy) > 6) {
+        if (Math.hypot(dx, dy) > 4) {
             isDraggingRef.current = true;
         }
     };
 
+    const handlePointerUp = (e: React.PointerEvent) => {
+        // Reset dragging flag; a click without movement should navigate
+        isDraggingRef.current = false;
+    };
+
+    // Existing handlers unchanged
     const handleCardClick = (link: string) => {
+        console.log('Card clicked, navigating to', link);
         if (isDraggingRef.current) return; // Prevent navigation if user was orbiting
         navigate(link);
     };
 
     // 4 clusters spaced at 90 degrees around the 360 room (0, PI/2, PI, 3*PI/2)
+    // Cards have well-spaced angle offsets (-0.24 and +0.24 radians) to prevent clustering/overlapping
     const clusters: EventCluster[] = useMemo(() => [
         {
             id: 'workshops',
@@ -80,95 +92,95 @@ const animatedRefs = useRef<Set<string>>(new Set());
             baseAngle: 0, // Front view (default)
             cards: [
                 {
-                    id: 'orientation25',
-                    title: 'Orientation ’25 & Hands-On Robotics',
-                    tag: 'Flagship Event',
-                    tagColor: 'bg-violet-100 text-violet-700',
-                    subtitle: 'Annual club orientation, live bot showcase & sensor hacking session',
+                    id: 'orientation26',
+                    title: 'Orientation ’26 & Hands-On Robotics',
+                    tag: 'Introductory Event',
+                    tagColor: 'bg-yellow-400 text-black',
+                    subtitle: 'Annual club orientation, live bot showcase & hands on where 1st learn about hub and its activity.',
                     image: orientationImg,
                     dateOrMeta: '11-13 Sept • LT3 & TV Room',
                     link: '/gallery',
-                    angleOffset: -0.16,
-                    yOffset: -0.1,
+                    angleOffset: -0.25,
+                    yOffset: -0.7,
                 },
                 {
-                    id: 'robomania',
-                    title: 'RoboMania Combat League',
-                    tag: 'Combat Arena',
-                    tagColor: 'bg-rose-100 text-rose-700',
-                    subtitle: 'Heavyweight bot clashes, pneumatic flippers & national championships',
-                    image: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=600&q=80',
-                    dateOrMeta: 'Annual Fest • Arena Battle',
+                    id: 'clawclash',
+                    title: 'Clawclash',
+                    tag: 'Flagship Event . LIVE',
+                    tagColor: 'bg-red-500 text-white',
+                    subtitle: 'Pick and Place bots competitions with crazy twist',
+                    image: clawclashImg,
+                    dateOrMeta: '2026 event • Arena Battle',
                     link: '/projects',
-                    angleOffset: 0.16,
-                    yOffset: -0.1,
+                    angleOffset: 0.25,
+                    yOffset: -0.7,
                 },
             ],
         },
         {
             id: 'flagship',
-            title: 'Flagship Inventions',
+            title: 'Flagship Projects',
             subtitle: '25+ Prototypes • Custom Circuit & Firmware Designs',
-            baseAngle: Math.PI / 2, // 90 degrees right
+            baseAngle: Math.PI / 2, 
             cards: [
                 {
                     id: 'robosoccer',
-                    title: 'RoboSoccer Striker & Goalie Duo',
+                    title: 'RoboSoccer Striker',
                     tag: 'Autonomous',
-                    tagColor: 'bg-blue-100 text-blue-700',
+                    tagColor: 'bg-blue-500 text-white',
                     subtitle: 'High-speed competitive omni-drive robots with pneumatic kicker systems',
-                    image: 'https://images.unsplash.com/photo-1563206767-5b18f218e8de?auto=format&fit=crop&w=600&q=80',
+                    image: robosoccer,
                     dateOrMeta: 'NRF24L01+ • Omni-Wheel',
                     link: '/projects',
-                    angleOffset: -0.16,
-                    yOffset: -0.1,
+                    angleOffset: -0.25,
+                    yOffset: -0.7,
                 },
                 {
-                    id: 'gridrunner',
-                    title: 'GridRunner PID Maze Racer',
-                    tag: 'Speed & Logic',
-                    tagColor: 'bg-amber-100 text-amber-700',
-                    subtitle: '500Hz discrete PID control loops with high-speed line & maze navigation',
-                    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80',
-                    dateOrMeta: '1st Place • Time-Trial Winner',
+                    id: 'RC Plane',
+                    title: 'Autonomous RC Plane',
+                    tag: 'Flight Control & Aerodynamics',
+                    tagColor: 'bg-sky-400 text-black',
+                    subtitle: 'Fixed-wing RC aircraft with servo-based control, flight stabilization and autonomous navigation',
+                    image: rcplane,
+                    dateOrMeta: 'RC Aircraft • Autonomous Flight',
                     link: '/projects',
-                    angleOffset: 0.16,
-                    yOffset: -0.1,
-                },
+                    angleOffset: 0.25,
+                    yOffset: -0.7,
+                }
             ],
         },
         {
-            id: 'exhibitions',
-            title: 'Exhibitions & Community',
-            subtitle: 'Campus Demonstrations • 200+ Proud Alumni',
-            baseAngle: Math.PI, // 180 degrees back
+            id: 'domains',
+            title: 'Explore Engineering Domains',
+            subtitle: 'Software • Electronics • Embedded • Mechanical',
+            baseAngle: Math.PI,
             cards: [
                 {
-                    id: 'spectra',
-                    title: 'Spectra Annual Tech Showcase',
-                    tag: 'Exhibition',
-                    tagColor: 'bg-emerald-100 text-emerald-700',
-                    subtitle: 'Live multi-robot demonstrations, student interactive games & exhibitions',
-                    image: 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=600&q=80',
-                    dateOrMeta: 'Campus Fest • Open Access',
-                    link: '/gallery',
-                    angleOffset: -0.16,
-                    yOffset: -0.1,
+                    id: 'software',
+                    title: 'Software & Intelligent Systems',
+                    tag: 'Code the Intelligence',
+                    tagColor: 'bg-blue-500 text-white',
+                    subtitle: 'Robotics software, computer vision, AI/ML and autonomous system development',
+                    image: software,
+                    dateOrMeta: 'Software • AI • Computer Vision',
+                    link: '/domains',
+                    angleOffset: -0.25,
+                    yOffset: -0.7,
                 },
                 {
-                    id: 'pyroguard',
-                    title: 'PyroGuard Autonomous Rover',
-                    tag: 'Hazard Rescue',
-                    tagColor: 'bg-orange-100 text-orange-700',
-                    subtitle: 'Hazardous corridor navigation with thermal anomaly detection & suppression',
-                    image: 'https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=600&q=80',
-                    dateOrMeta: 'Thermal Sensors • Servo Nozzle',
-                    link: '/projects',
-                    angleOffset: 0.16,
-                    yOffset: -0.1,
+                    id: 'hardware',
+                    title: 'Embedded & Hardware Systems',
+                    tag: 'Engineer the Machine',
+                    tagColor: 'bg-orange-500 text-white',
+                    subtitle: 'Microcontrollers, electronics, sensors, motor control and real-world hardware integration',
+                    image: hardware,
+                    dateOrMeta: 'Electronics • Embedded • Control',
+                    link: '/domains',
+                    angleOffset: 0.25,
+                    yOffset: -0.7,
                 },
             ],
-        },
+        },        
         {
             id: 'team',
             title: 'Core Team & Recruitment',
@@ -177,27 +189,27 @@ const animatedRefs = useRef<Set<string>>(new Set());
             cards: [
                 {
                     id: 'coreteam',
-                    title: 'Meet the Engineering Team',
-                    tag: 'Minds Behind μCR',
-                    tagColor: 'bg-purple-100 text-purple-700',
-                    subtitle: 'Passionate builders across technical, embedded, and management domains',
-                    image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80',
-                    dateOrMeta: 'Advisors & Heads • 2024-25',
+                    title: 'Meet the Minds Behind μCR',
+                    tag: 'The People Behind the Builds',
+                    tagColor: 'bg-purple-600 text-white',
+                    subtitle: 'Meet the mentors, leaders and passionate builders driving μCR forward across technical, embedded and management domains.',
+                    image: coreteam,
+                    dateOrMeta: 'Advisors & Core Team • 2026-27',
                     link: '/team',
-                    angleOffset: -0.16,
-                    yOffset: -0.1,
+                    angleOffset: -0.25,
+                    yOffset: -0.7,
                 },
                 {
-                    id: 'joinus',
-                    title: 'Join μCR Robotics Hub',
-                    tag: 'Apply Now',
-                    tagColor: 'bg-teal-100 text-teal-700',
-                    subtitle: 'Ready to build autonomous robots and solve real engineering challenges?',
-                    image: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=600&q=80',
-                    dateOrMeta: 'Recruitment Open • SAC Bench',
-                    link: '/contact',
-                    angleOffset: 0.16,
-                    yOffset: -0.1,
+                    id: 'lifeatmucr',
+                    title: 'Life at μCR',
+                    tag: 'More Than Robotics',
+                    tagColor: 'bg-teal-600 text-white',
+                    subtitle: 'The people, teamwork, chaos and unforgettable experiences behind every build.',
+                    image: ucrlife,
+                    dateOrMeta: 'People • Projects • Memories',
+                    link: '/gallery',
+                    angleOffset: 0.25,
+                    yOffset: -0.7,
                 },
             ],
         },
@@ -287,6 +299,7 @@ const animatedRefs = useRef<Set<string>>(new Set());
         // OrbitControls listens to container so dragging works everywhere
         const controls = new OrbitControls(camera, container);
         controls.enableDamping = true;
+        controls.dampingFactor = 0.08;
         controls.minPolarAngle = Math.PI / 2;
         controls.maxPolarAngle = Math.PI / 2;
         controls.enablePan = false;
@@ -318,11 +331,11 @@ const animatedRefs = useRef<Set<string>>(new Set());
         const cardPositions: { id: string; pos: THREE.Vector3 }[] = [];
 
         clusters.forEach((cluster, clusterIdx) => {
-            // Header 3D position
+            // Header 3D position (raised up to give full visibility to title and subtitle)
             const hAngle = cluster.baseAngle;
             const hPos = new THREE.Vector3(
                 RADIUS * Math.sin(hAngle),
-                1.35, // Above the cards
+                2.35, // Clear vertical elevation above cards
                 -RADIUS * Math.cos(hAngle)
             );
             headerPositions.push({
@@ -330,12 +343,12 @@ const animatedRefs = useRef<Set<string>>(new Set());
                 pos: hPos,
             });
 
-            // Card 3D positions
+            // Card 3D positions (placed in lower view so they never hide the header text)
             cluster.cards.forEach((card) => {
                 const cAngle = cluster.baseAngle + card.angleOffset;
                 const cPos = new THREE.Vector3(
                     RADIUS * Math.sin(cAngle),
-                    card.yOffset ?? -0.1,
+                    card.yOffset ?? -0.7,
                     -RADIUS * Math.cos(cAngle)
                 );
                 cardPositions.push({
@@ -349,6 +362,7 @@ const animatedRefs = useRef<Set<string>>(new Set());
         const camForward = new THREE.Vector3();
         const toPoint = new THREE.Vector3();
 
+        // Smooth positional updater without CSS transitions fighting the 60fps render loop
         const updatePosition = (el: HTMLElement | null, pos: THREE.Vector3, isHeader = false) => {
             if (!el) return;
 
@@ -358,40 +372,32 @@ const animatedRefs = useRef<Set<string>>(new Set());
 
             const dot = camForward.dot(toPoint);
 
-            // Hide if behind camera
-            if (dot < 0.22) {
+            // Smooth angular fade threshold to avoid sudden popping/spawning from anywhere
+            const minDot = 0.26;
+            const maxDot = 0.54;
+
+            if (dot < minDot) {
                 el.style.opacity = '0';
                 el.style.pointerEvents = 'none';
                 el.style.visibility = 'hidden';
                 return;
             }
 
+            // Smooth cubic fade between minDot and maxDot
+            const t = Math.min(Math.max((dot - minDot) / (maxDot - minDot), 0), 1);
+            const smoothOpacity = t * t * (3 - 2 * t);
+
             const projected = pos.clone().project(camera);
             const x = (projected.x * 0.5 + 0.5) * sizes.width;
             const y = (-projected.y * 0.5 + 0.5) * sizes.height;
 
             el.style.visibility = 'visible';
-            // Default visible state
-            el.style.opacity = '1';
-            el.style.pointerEvents = 'auto';
+            el.style.opacity = smoothOpacity.toFixed(3);
+            el.style.pointerEvents = smoothOpacity > 0.65 ? 'auto' : 'none';
 
-            if (!isHeader) {
-                const id = el.dataset.id;
-                if (id && !animatedRefs.current.has(id)) {
-                    // Animate from bottom quickly
-                    el.style.transition = 'transform 0.12s ease-out, opacity 0.12s ease-out';
-                    el.style.transform = `translate3d(${x.toFixed(1)}px, ${y.toFixed(1) + window.innerHeight}px, 0) translate(-50%, -50%)`;
-                    requestAnimationFrame(() => {
-                        el.style.transform = `translate3d(${x.toFixed(1)}px, ${y.toFixed(1)}px, 0) translate(-50%, -50%)`;
-                    });
-                    animatedRefs.current.add(id);
-                } else {
-                    el.style.transform = `translate3d(${x.toFixed(1)}px, ${y.toFixed(1)}px, 0) translate(-50%, -50%)`;
-                }
-            } else {
-                // Headers: direct placement
-                el.style.transform = `translate3d(${x.toFixed(1)}px, ${y.toFixed(1)}px, 0) translate(-50%, -50%)`;
-            }
+            // Natural scale factor that gently blooms when coming into field of view
+            const scale = (0.92 + 0.08 * smoothOpacity).toFixed(3);
+            el.style.transform = `translate3d(${x.toFixed(1)}px, ${y.toFixed(1)}px, 0) translate(-50%, -50%) scale(${scale})`;
         };
 
         let animationFrameId: number;
@@ -438,6 +444,7 @@ const animatedRefs = useRef<Set<string>>(new Set());
             ref={containerRef}
             onPointerDown={handlePointerDown}
             onPointerMove={handlePointerMove}
+            onPointerUp={handlePointerUp}
             className="relative w-full h-full select-none overflow-hidden cursor-grab active:cursor-grabbing"
         >
             {/* Three.js WebGL Canvas */}
@@ -447,7 +454,7 @@ const animatedRefs = useRef<Set<string>>(new Set());
             />
 
             {/* 3D Floating Billboards / Event Clusters */}
-            <div className="absolute inset-0 pointer-events-none overflow-hidden z-20">
+            <div className="absolute inset-0 overflow-hidden z-20">
                 {clusters.map((cluster, clusterIdx) => (
                     <div key={cluster.id}>
                         {/* Cluster Category Title */}
@@ -455,24 +462,23 @@ const animatedRefs = useRef<Set<string>>(new Set());
                             ref={(el) => {
                                 clusterHeaderRefs.current[clusterIdx] = el;
                             }}
-                            className="absolute top-0 left-0 text-center will-change-transform transition-opacity duration-150 select-none pointer-events-none"
+                            className="absolute top-0 left-0 text-center will-change-transform select-none pointer-events-none"
                             style={{ opacity: 0 }}
                         >
-                            <div className="flex items-center justify-center gap-2 mb-1">
-                                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold tracking-wider uppercase bg-white/20 text-white backdrop-blur-md border border-white/30 shadow-md">
-                                    <Sparkles className="w-3.5 h-3.5 text-amber-300" />
+                            <div className="flex items-center justify-center gap-2 mb-1.5">
+                                <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-bold tracking-wider uppercase border-2 border-black bg-yellow-400 text-black shadow-[3px_3px_0_black]">
+                                    <Sparkles className="w-3.5 h-3.5 text-black" />
                                     <span>μCR Spotlight</span>
                                 </span>
                             </div>
-                            <h2 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)]">
+                            <h2 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]">
                                 {cluster.title}
                             </h2>
-                            <p className="text-xs sm:text-sm text-gray-200/90 font-medium tracking-wide drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] mt-0.5">
+                            <p className="text-xs sm:text-sm text-white/95 font-semibold tracking-wide drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] mt-1 max-w-lg mx-auto">
                                 {cluster.subtitle}
                             </p>
                         </div>
 
-                        {/* Cards inside this cluster */}
                         {cluster.cards.map((card) => (
                             <div
                                 key={card.id}
@@ -481,77 +487,52 @@ const animatedRefs = useRef<Set<string>>(new Set());
                                     else cardElementRefs.current.delete(card.id);
                                 }}
                                 onClick={() => handleCardClick(card.link)}
-                                className="group absolute top-0 left-0 w-[240px] sm:w-[270px] md:w-[290px] bg-white text-gray-900 rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-black/10 will-change-transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-violet-500/60 cursor-pointer pointer-events-auto select-none"
+                                className="group absolute top-0 left-0 w-[240px] sm:w-[270px] md:w-[285px] bg-[#fffdf7] text-black rounded-2xl overflow-hidden border-2 border-black shadow-[6px_6px_0_black] hover:shadow-[6px_6px_0_#facc15] hover:-translate-y-1.5 will-change-transform cursor-pointer pointer-events-auto select-none transition-shadow duration-200"
                                 style={{ opacity: 0 }}
                             >
                                 {/* Thumbnail Image */}
-                                <div className="relative h-32 sm:h-36 w-full overflow-hidden bg-gray-900">
+                                <div className="relative h-28 sm:h-32 w-full overflow-hidden border-b-2 border-black bg-neutral-900">
                                     <img
                                         src={card.image}
                                         alt={card.title}
-                                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                        loading="lazy"
+                                        decoding="async"
+                                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                                         draggable={false}
                                     />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                                     {/* Tag Badge */}
                                     <span
-                                        className={`absolute top-2.5 left-2.5 px-2.5 py-1 rounded-full text-[10px] font-bold tracking-wider uppercase shadow-md ${card.tagColor}`}
+                                        className={`absolute top-2 left-2 px-2.5 py-0.5 rounded-full text-[10px] font-bold tracking-wider uppercase border-2 border-black shadow-[2px_2px_0_black] ${card.tagColor}`}
                                     >
                                         {card.tag}
                                     </span>
                                 </div>
 
                                 {/* Content Details */}
-                                <div className="p-4 sm:p-4.5 flex flex-col justify-between space-y-2">
+                                <div className="p-3.5 sm:p-4 flex flex-col justify-between space-y-2">
                                     {card.dateOrMeta && (
-                                        <div className="flex items-center gap-1.5 text-[11px] font-semibold text-gray-500">
-                                            <Calendar className="w-3.5 h-3.5 text-violet-500 shrink-0" />
+                                        <div className="flex items-center gap-1.5 text-[11px] font-bold text-neutral-600">
+                                            <Calendar className="w-3.5 h-3.5 text-blue-600 shrink-0" />
                                             <span>{card.dateOrMeta}</span>
                                         </div>
                                     )}
-                                    <h3 className="text-sm sm:text-base font-bold text-gray-900 leading-snug group-hover:text-violet-600 transition-colors line-clamp-2">
+                                    <h3 className="text-sm sm:text-base font-bold text-black leading-snug group-hover:text-blue-600 transition-colors line-clamp-2">
                                         {card.title}
                                     </h3>
-                                    <p className="text-xs text-gray-600 leading-relaxed line-clamp-2">
+                                    <p className="text-xs text-neutral-700 leading-relaxed line-clamp-3">
                                         {card.subtitle}
                                     </p>
 
                                     {/* Action link */}
-                                    <div className="pt-2 border-t border-gray-100 flex items-center justify-between text-xs font-bold text-violet-600 group-hover:text-violet-700">
+                                    {/*<div className="pt-2 border-t-2 border-black/10 flex items-center justify-between text-xs font-bold text-blue-600 group-hover:text-blue-800 transition-colors">
                                         <span>Explore Details</span>
                                         <ExternalLink className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                                    </div>
+                                    </div>*/}
                                 </div>
                             </div>
                         ))}
                     </div>
                 ))}
-            </div>
-
-            {/* Quick Tour Navigation Controls (Top Right, matching MIT virtual tour) */}
-            <div className="absolute top-6 right-6 z-30 flex items-center gap-2">
-                <button
-                    onClick={(e) => {
-                        e.stopPropagation();
-                        rotateToNext(1);
-                    }}
-                    className="w-10 h-10 rounded-full bg-black/60 hover:bg-black/90 text-white backdrop-blur-md border border-white/20 flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95 shadow-xl"
-                    aria-label="Rotate Left"
-                    title="Previous Section"
-                >
-                    <ChevronLeft className="w-5 h-5" />
-                </button>
-                <button
-                    onClick={(e) => {
-                        e.stopPropagation();
-                        rotateToNext(-1);
-                    }}
-                    className="w-10 h-10 rounded-full bg-black/60 hover:bg-black/90 text-white backdrop-blur-md border border-white/20 flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95 shadow-xl"
-                    aria-label="Rotate Right"
-                    title="Next Section"
-                >
-                    <ChevronRight className="w-5 h-5" />
-                </button>
             </div>
         </div>
     );

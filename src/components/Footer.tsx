@@ -6,7 +6,7 @@ import Logo from './Logo';
 import { Link } from "react-router-dom";
 const Footer = () => {
   return (
-    <footer className=" border-t border-gray-800">
+    <footer className="border-t-2 border-black bg-white/40">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <motion.div
@@ -45,8 +45,8 @@ const Footer = () => {
       Microcontroller-Based Systems & Robotics Hub
     </span>
     </Link>
-    <p className=" text-sm mt-1">
-      More than a hub, No less than a legacy.
+    <p className="text-sm mt-1 text-neutral-700">
+      More than a hub — no less than a legacy.
     </p>
   </div>
 </div>
@@ -60,18 +60,18 @@ const Footer = () => {
             transition={{ delay: 0.1 }}
             className="space-y-4"
           >
-            <h3 className="text-lg font-semibold ">Contact Info</h3>
-            <div className="space-y-2 text-sm ">
+            <h3 className="text-lg font-bold text-black">Contact Info</h3>
+            <div className="space-y-2 text-sm text-neutral-700">
               <div className="flex items-center space-x-2">
-                <MapPin size={16} />
-                <span>μCR Sac Room,Jaypee Institute of Information Technology, Sector 62, Noida</span>
+                <MapPin size={16} className="shrink-0 text-black" />
+                <span>μCR SAC Room, Jaypee Institute of Information Technology, Sector 62, Noida</span>
               </div>
               <div className="flex items-center space-x-2">
-                <Clock size={16} />
+                <Clock size={16} className="shrink-0 text-black" />
                 <span>Mon-Fri: 10:00 AM - 6:00 PM</span>
               </div>
               <div className="flex items-center space-x-2">
-<a href="mailto:ucr@ucrjiit.com" className="flex items-center space-x-2 hover:underline">
+<a href="mailto:ucr@ucrjiit.com" className="flex items-center space-x-2 hover:underline text-blue-600 font-medium">
   <Mail size={16} />
   <span>ucr@ucrjiit.com</span>
 </a>
@@ -87,9 +87,9 @@ const Footer = () => {
             transition={{ delay: 0.2 }}
             className="space-y-4"
           >
-            <h3 className="text-lg font-semibold">Connect With Us</h3>
-            <div className="text-sm">
-              <p>Join our community of passionate robotics enthusiasts and be part of the innovation revolution.</p>
+            <h3 className="text-lg font-bold text-black">Connect With Us</h3>
+            <div className="text-sm text-neutral-700">
+              <p>Join our community of robotics builders, firmware hackers, and creators driving hardware innovation forward.</p>
             </div>
             <div className="flex space-x-4">
               {[
@@ -129,7 +129,7 @@ const Footer = () => {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`w-12 h-12 border-2 bg-gradient-to-br ${social.color} rounded-lg flex items-center justify-center hover:scale-110 transition-transform duration-300`}
+                  className={`w-11 h-11 border-2 border-black bg-gradient-to-br ${social.color} rounded-xl flex items-center justify-center shadow-[3px_3px_0_black] hover:shadow-[3px_3px_0_#facc15] hover:-translate-y-0.5 transition-all duration-200`}
                   aria-label={social.name}
                 >
                   {social.icon}
@@ -140,7 +140,7 @@ const Footer = () => {
           
         </div>
 
-        <div className="mt-8 pt-8 border-t border-gray-800 text-center text-sm ">
+        <div className="mt-8 pt-8 border-t-2 border-black/10 text-center text-sm text-neutral-600 font-medium">
           <p>&copy; 2026 μCR - Microcontroller-Based Systems and Robotics Hub. All rights reserved.</p>
          <p>Developed by <a href="https://www.linkedin.com/in/anshulsingh27" target="_blank" rel="noopener noreferrer">🌼</a></p>
         </div>

@@ -1,26 +1,26 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { useNavigate } from "react-router-dom";
 import { Mail, Filter } from 'lucide-react';
+import Footer from '../components/Footer';
+import { SmartImg } from '../components/SmartImg';
 import { FaGithub, FaInstagram, FaLinkedin } from 'react-icons/fa';
-import ayush from '../assets/ayush.jpeg';
-import bhavyanshika from '../assets/bhavyanshika.jpeg';
-import hema from "../assets/hema.png";
-import arjun from '../assets/arjun.jpeg';
-import navyaa from '../assets/navyaa.jpeg'
-import rakshit from '../assets/rakshit.jpeg'
-import shivam from '../assets/shivam.jpeg'
-import vedansh from '../assets/vedansh.jpg'
-import upanshi from '../assets/upanshi.jpeg'
-import vanshika from '../assets/vanshika.jpeg'
-import amisha from '../assets/amisha.jpeg'
-import priyanshu from '../assets/priyanshu.jpg'
-import aadya from '../assets/aadya.jpeg'
-import jahnavi from '../assets/jahnavi.jpeg'
-import shreyansh from '../assets/shreyansh.png'
+import ayush from '../assets/ayush.webp';
+import bhavyanshika from '../assets/bhavyanshika.webp';
+import hema from "../assets/hema.webp";
+import arjun from '../assets/arjun.webp';
+import navyaa from '../assets/navyaa.webp';
+import rakshit from '../assets/rakshit.webp';
+import shivam from '../assets/shivam.webp';
+import vedansh from '../assets/vedansh.webp';
+import upanshi from '../assets/upanshi.webp';
+import vanshika from '../assets/vanshika.webp';
+import amisha from '../assets/amisha.webp';
+import priyanshu from '../assets/priyanshu.webp';
+import aadya from '../assets/aadya.webp';
+import jahnavi from '../assets/jahnavi.webp';
+import shreyansh from '../assets/shreyansh.webp';
 const Team = () => {
     const [filter, setFilter] = useState('all');
-    const navigate = useNavigate();
 
     const facultyCoordinator = {
         id: 5,
@@ -29,7 +29,7 @@ const Team = () => {
         category: "faculty",
         branch: "Computer Science",
         image: hema,
-        bio: "Experienced mentor and researcher in robotics and embedded systems, guiding innovative student projects in automation, smart systems, and sensor applications",
+        bio: "Faculty coordinator and mentor specializing in embedded systems and automated control, guiding student research across robotics, intelligent sensor networks, and edge computing.",
         //github: "https://github.com",
         //linkedin: "https://linkedin.com",
         // instagram: "https://instagram.com",
@@ -43,7 +43,7 @@ const Team = () => {
             category: "advisor",
             branch: "Computer Science Engineering",
             image: arjun,
-            bio: "Excels in organizing, streamlining operations, and ensuring smooth execution with sharp strategy and leadership.",
+            bio: "Directs club operations, hardware procurement, and competitive strategy, ensuring flawless execution across national robotics tournaments and hands-on workshops.",
             github: "https://github.com/arjun-1703",
             linkedin: "https://www.linkedin.com/in/arjun-gupta-74b726286",
             instagram: "https://www.instagram.com/arjunn._.04/",
@@ -56,7 +56,7 @@ const Team = () => {
             category: "advisor",
             branch: "Computer Science Engineering",
             image: bhavyanshika,
-            bio: "Leads innovation with expertise, creativity, and passion, driving cutting-edge solutions and technical excellence.",
+            bio: "Mentors hardware-firmware integration, circuit architecture, and competitive bot design with a sharp focus on real-world mechanical reliability and PCB precision.",
             github: "https://github.com/BhavyanshikaGupta",       //change
             linkedin: "https://www.linkedin.com/in/bhavyanshika-gupta-8888bb284",
             instagram: "https://www.instagram.com/_bhavyanshikagupta_9453/",
@@ -69,7 +69,7 @@ const Team = () => {
             category: "advisor",
             branch: "Computer Science Engineering",
             image: ayush,
-            bio: "Leads with innovation, technical expertise, and a passion for building efficient, future-ready solutions.",
+            bio: "Advises technical roadmap, embedded systems development, and high-performance microcontroller architectures across autonomous rovers and IoT projects.",
             github: "https://github.com/agrawalayush29",
             linkedin: "http://www.linkedin.com/in/ayush-agrawal-1825582a0",
             instagram: "https://www.instagram.com/ayushagrawal1839/",
@@ -86,7 +86,7 @@ const Team = () => {
             category: "tech",
             branch: "Computer Science Engineering",
             image: navyaa,
-            bio: "Leads innovation with expertise, creativity, and passion, driving cutting-edge solutions and technical excellence.",
+            bio: "Leads firmware engineering, sensor interfacing, and technical bootcamps across Arduino, ESP32, and Raspberry Pi platforms to empower upcoming student builders.",
             github: "https://github.com/navyaa9706",
             linkedin: "https://www.linkedin.com/in/navyaa-jain-04b882373",
             instagram: "https://www.instagram.com/09_navyaa/",
@@ -99,7 +99,7 @@ const Team = () => {
             category: "tech",
             branch: "Computer Science Engineering",
             image: shivam,
-            bio: "Fun loving more than technical. Makes imagination into bots with enthusiasm as a power fuel.",
+            bio: "Drives mechanical fabrication, high-torque motor driver circuitry, and rapid CAD prototyping for arena combat bots and agile autonomous rovers.",
             github: "https://github.com/shivamdiwaker1147-dot",
             linkedin: "https://www.linkedin.com/in/shivam-diwaker-10bb8b312",
             instagram: "https://www.instagram.com/shivamdiwaker_0609/",
@@ -112,7 +112,7 @@ const Team = () => {
             category: "tech",
             branch: "Electronics & Communication Engineering",
             image: vedansh,
-            bio: "Strong Calm and Steady",
+            bio: "Specializes in circuit board design, RF telemetry, and real-time sensor fusion for mobile robotic platforms and line-tracking systems.",
             github: "#",
             linkedin: "https://www.linkedin.com/in/vedansh-goel-21a37930b",
             instagram: "https://www.instagram.com/vedanshgoel12/",
@@ -125,7 +125,7 @@ const Team = () => {
             category: "tech",
             branch: "Computer Science Engineering",
             image: upanshi,
-            bio: "Leads with innovation, technical expertise, and a passion for building efficient, future-ready solutions.",
+            bio: "Focuses on intelligent firmware algorithms, autonomous path planning, and embedded systems architecture for complex multi-sensor platforms.",
             github: "https://github.com/Upanshi-Mittal",
             linkedin: "https://www.linkedin.com/in/upanshi-mittal-498213320/",
             instagram: "https://www.instagram.com/shi.in_stxllar/",
@@ -139,7 +139,7 @@ const Team = () => {
             category: "management",
             branch: "Computer Science Engineering",
             image: jahnavi,
-            bio: "Purpose. Creativity. Impact",
+            bio: "Coordinates inter-college hackathons, corporate sponsorship acquisition, and end-to-end event logistics for flagship campus robotics exhibitions.",
             github: "https://github.com/itsjahnavi09",
             linkedin: "www.linkedin.com/in/jahnavi-singh-2ba644326/",
             instagram: "https://www.instagram.com/jahnavi_singhhh/",
@@ -152,7 +152,7 @@ const Team = () => {
             category: "management",
             branch: "Computer Science Engineering",
             image: priyanshu,
-            bio: "Creative instinct. Strategic mind.",
+            bio: "Spearheads operational logistics, bench inventory management, and event execution for high-stakes tech fests and hands-on workshops.",
             github: "#",
             linkedin: "https://www.linkedin.com/in/priyanshu-singh-6a3588385/",
             instagram: "https://www.instagram.com/priynshu__singh/",
@@ -166,7 +166,7 @@ const Team = () => {
             category: "digital",
             branch: "Computer Science Engineering",
             image: aadya,
-            bio: "Made of Side Quests ",
+            bio: "Directs digital outreach, social media presence, and brand storytelling to showcase μCR’s engineering journey and tournament milestones.",
             github: "#",
             linkedin: "https://www.linkedin.com/in/aadya-mudgal-62a31632a/",
             instagram: "https://www.instagram.com/aady4core/",
@@ -179,7 +179,7 @@ const Team = () => {
             category: "cinematography",
             branch: "Electronics & Communication Engineering",
             image: vanshika,
-            bio: "The goal is to experience.",
+            bio: "Captures the engineering hustle through visual cinematography, documenting late-night bench sessions, bot testing, and arena matches.",
             github: "#",
             linkedin: "https://www.linkedin.com/in/vanshika-gupta-5313612ba/",
             instagram: "https://www.instagram.com/vanshika._vg/",
@@ -194,7 +194,7 @@ const Team = () => {
             category: "marketing",
             branch: "Computer Science Engineering",
             image: shreyansh,
-            bio: "Cloud computing enthusiast, always looking for fun, distracted by everything ",
+            bio: "Leads publicity campaigns, community engagement, and digital outreach to expand μCR’s footprint across student engineering communities.",
             github: "https://github.com/SRajat26",
             linkedin: "#",
             instagram: "https://www.instagram.com/shutup.shreyansh/",
@@ -207,7 +207,7 @@ const Team = () => {
             category: "marketing",
             branch: "Electronics & Communication Engineering",
             image: rakshit,
-            bio: "Exploring semiconductor design and building impactful engineering projects.",
+            bio: "Drives strategic outreach, semiconductor design exploration, and technical partnerships across college hubs and tech communities.",
             github: "https://github.com/rakshitx11",
             linkedin: "https://linkedin.com/in/rakshitgoyal11",
             instagram: "https://www.instagram.com/__rakshit_11",
@@ -221,14 +221,13 @@ const Team = () => {
             category: "creative",
             branch: "Computer Science Engineering",
             image: amisha,
-            bio: "Passionate about technology and design, with a keen eye for detail and a constant drive to refine every idea.",
+            bio: "Designs UI/UX visuals, promotional banners, and graphic identities that give μCR projects and events their distinct neo-brutalist aesthetic.",
             github: "https://github.com/AmishaMittal01",
             linkedin: "https://www.linkedin.com/in/01-amisha-mittal/",
             instagram: "https://www.instagram.com/amisha_m01/",
             email: "mittalamisha2005@gmail.com"
         },
     ];
-    console.log(hema);
     const filters = [
         { id: 'all', name: 'All Members', count: teamMembers.length },
         { id: 'tech', name: 'Technical', count: teamMembers.filter(m => m.category === 'tech').length },
@@ -271,29 +270,32 @@ const Team = () => {
     };
 
 
-    const MemberCard = ({ member, index = 0 }: MemberCardProps) => (<motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: index * 0.05, duration: 0.6 }}
-        className="group rounded-2xl border-2 transition-all duration-300 flex flex-col justify-between overflow-hidden relative hover:-translate-y-1 hover:shadow-[6px_6px_0_#facc15] shadow-[6px_6px_0_black] bg-[#fffdf7] backdrop-blur-md"
-    >
-        <div className="aspect-square relative overflow-hidden ">
-            <img
-                src={member.image}
-                alt={member.name}
-                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110 "
-            />
-            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="absolute bottom-4 left-4 right-4">
+    const MemberCard = ({ member, index = 0 }: MemberCardProps) => (
+        <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.05, duration: 0.6 }}
+            className="group rounded-2xl border-2 border-black transition-all duration-300 flex flex-col justify-between overflow-hidden relative hover:-translate-y-1 hover:shadow-[6px_6px_0_#facc15] shadow-[6px_6px_0_black] bg-[#fffdf7] backdrop-blur-md"
+        >
+            <div className="aspect-square relative overflow-hidden border-b-2 border-black bg-neutral-100">
+                <SmartImg
+                    src={member.image}
+                    alt={member.name}
+                    width={300}
+                    height={300}
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-4">
                     <div className="flex space-x-2">
                         {member.github && (
                             <a
                                 href={member.github}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="w-8 h-8  backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-colors"
+                                className="w-9 h-9 rounded-full border-2 border-black bg-white text-black shadow-[2px_2px_0_black] hover:bg-yellow-400 hover:scale-110 flex items-center justify-center transition-all"
+                                aria-label="GitHub"
                             >
-                                <FaGithub className="w-4 h-4 text-white" />
+                                <FaGithub className="w-4 h-4" />
                             </a>
                         )}
 
@@ -302,68 +304,71 @@ const Team = () => {
                                 href={member.linkedin}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-colors"
+                                className="w-9 h-9 rounded-full border-2 border-black bg-white text-black shadow-[2px_2px_0_black] hover:bg-yellow-400 hover:scale-110 flex items-center justify-center transition-all"
+                                aria-label="LinkedIn"
                             >
-                                <FaLinkedin className="w-4 h-4 text-white" />
+                                <FaLinkedin className="w-4 h-4" />
                             </a>
                         )}
-                        {/* Instagram */}
+
                         {member.instagram && (
                             <a
                                 href={member.instagram}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-colors"
+                                className="w-9 h-9 rounded-full border-2 border-black bg-white text-black shadow-[2px_2px_0_black] hover:bg-yellow-400 hover:scale-110 flex items-center justify-center transition-all"
+                                aria-label="Instagram"
                             >
-                                <FaInstagram className="w-4 h-4 text-white" />
+                                <FaInstagram className="w-4 h-4" />
                             </a>
                         )}
 
-                        {/* Email */}
-                        <a
-                            href={`mailto:${member.email}`}
-                            className="w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-colors"
-                        >
-                            <Mail className="w-4 h-4 text-white" />
-                        </a>
+                        {member.email && (
+                            <a
+                                href={`mailto:${member.email}`}
+                                className="w-9 h-9 rounded-full border-2 border-black bg-white text-black shadow-[2px_2px_0_black] hover:bg-yellow-400 hover:scale-110 flex items-center justify-center transition-all"
+                                aria-label="Email"
+                            >
+                                <Mail className="w-4 h-4" />
+                            </a>
+                        )}
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div className="p-6 h-[260px] flex flex-col justify-between space-y-3">
-            <div>
-                <h3 className="text-lg font-semibold  group-hover:text-violet-400 transition-colors duration-300">
-                    {member.name}
-                </h3>
-                <p className="text-blue-400 font-medium text-sm">{member.role}</p>
+            <div className="p-6 h-[260px] flex flex-col justify-between space-y-3">
+                <div>
+                    <h3 className="text-xl font-bold text-black group-hover:text-blue-600 transition-colors duration-200">
+                        {member.name}
+                    </h3>
+                    <p className="text-blue-600 font-bold text-sm mt-0.5">{member.role}</p>
 
-                {member.branch && (
-                    <div className="text-sm  mt-1">
-                        <p>{member.branch}</p>
-                    </div>
-                )}
+                    {member.branch && (
+                        <div className="text-xs text-neutral-600 font-medium mt-1">
+                            <p>{member.branch}</p>
+                        </div>
+                    )}
 
-                <p className=" text-xs leading-relaxed mt-2">{member.bio}</p>
-            </div>
+                    <p className="text-xs text-neutral-700 leading-relaxed mt-2.5 line-clamp-3">{member.bio}</p>
+                </div>
 
-            <div>
-                <span className={`px-3 py-1 border rounded-full text-xs font-medium ${member.category === 'faculty' ? 'bg-cyan-500/20 text-cyan-400' :
-                        member.category === 'leadership' ? 'bg-violet-600/20 text-violet-400' :
-                            member.category === 'tech' ? 'bg-red-600/20 text-red-400' :
-                                member.category === 'finance' ? 'bg-green-600/20 text-green-400' :
-                                    member.category === 'management' ? 'bg-blue-600/20 text-blue-400' :
-                                        member.category === 'creative' ? 'bg-pink-600/20 text-pink-400' :
-                                            member.category === 'digital' ? 'bg-teal-600/20 text-teal-400' :
-                                                member.category === 'cinematography' ? 'bg-teal-600/20 text-teal-400' :
-                                                    'bg-yellow-500/20 text-yellow-400'
+                <div>
+                    <span className={`px-3 py-1 border-2 border-black rounded-full text-xs font-bold uppercase tracking-wider ${
+                        member.category === 'faculty' ? 'bg-cyan-100 text-cyan-800' :
+                        member.category === 'advisor' ? 'bg-amber-100 text-amber-800' :
+                        member.category === 'tech' ? 'bg-red-100 text-red-800' :
+                        member.category === 'management' ? 'bg-blue-100 text-blue-800' :
+                        member.category === 'creative' ? 'bg-pink-100 text-pink-800' :
+                        member.category === 'digital' ? 'bg-teal-100 text-teal-800' :
+                        member.category === 'cinematography' ? 'bg-purple-100 text-purple-800' :
+                        member.category === 'marketing' ? 'bg-yellow-200 text-yellow-900' :
+                        'bg-neutral-100 text-neutral-800'
                     }`}>
-                    {member.category.charAt(0).toUpperCase() + member.category.slice(1)}
-                </span>
+                        {member.category}
+                    </span>
+                </div>
             </div>
-        </div>
-
-    </motion.div>
+        </motion.div>
     );
 
     return (
@@ -377,12 +382,11 @@ const Team = () => {
                         transition={{ duration: 0.8 }}
                         className="text-center space-y-6"
                     >
-                        <h1 className="text-4xl md:text-6xl font-bold ">
-                            Our Team
+                        <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-black">
+                            The Minds Behind μCR
                         </h1>
-                        <p className="text-xl md:text-2xl max-w-4xl mx-auto">
-                            Meet the passionate individuals who drive innovation and excellence at μCR.
-                            Our diverse team brings together expertise from various domains to create amazing robotics solutions.
+                        <p className="text-lg md:text-2xl max-w-4xl mx-auto leading-relaxed text-neutral-700">
+                            Meet the engineers, designers, and organizers powering our robotics benches. From autonomous rovers to national arena championships, we build together.
                         </p>
                     </motion.div>
                 </div>
@@ -397,11 +401,11 @@ const Team = () => {
                         transition={{ duration: 0.8 }}
                         className="text-center mb-12"
                     >
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                            Faculty Coordinator
+                        <h2 className="text-3xl md:text-4xl font-bold mb-3 text-black">
+                            Faculty Mentorship
                         </h2>
-                        <p className="text-xl ">
-                            Academic leadership and guidance for μCR
+                        <p className="text-lg sm:text-xl text-neutral-700">
+                            Academic leadership, institutional support, and research guidance powering μCR
                         </p>
                     </motion.div>
 
@@ -422,12 +426,11 @@ const Team = () => {
                         transition={{ duration: 0.8 }}
                         className="text-center mb-12"
                     >
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                            Senior Advisors
-                            
+                        <h2 className="text-3xl md:text-4xl font-bold mb-3 text-black">
+                            Senior Advisory Council
                         </h2>
-                        <p className="text-xl">
-                            Expert guidance and mentorship from experienced Seniors
+                        <p className="text-lg sm:text-xl text-neutral-700">
+                            Strategic guidance, tournament wisdom, and technical mentorship from veteran leads
                         </p>
                     </motion.div>
 
@@ -448,31 +451,36 @@ const Team = () => {
                         transition={{ duration: 0.8 }}
                         className="text-center mb-12"
                     >
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                            Core Team
+                        <h2 className="text-3xl md:text-4xl font-bold mb-3 text-black">
+                            Executive Core Team
                         </h2>
-                        <p className="text-xl ">
-                            The driving force behind μCR's innovation and success
+                        <p className="text-lg sm:text-xl text-neutral-700">
+                            The active leads driving hardware builds, firmware workshops, events, and community outreach
                         </p>
                     </motion.div>
 
                     <div className="mb-12">
                         <div className="flex items-center justify-center mb-6">
-                            <Filter className="w-5 h-5 mr-2" />
-                            <span className="font-medium">Filter by Role</span>
+                            <div className="flex items-center space-x-2 px-3 py-1.5 rounded-full border-2 border-black bg-white shadow-[2px_2px_0_black]">
+                                <Filter className="w-4 h-4 text-neutral-600" />
+                                <span className="font-bold text-xs uppercase tracking-wider text-black">Filter by Role</span>
+                            </div>
                         </div>
-                        <div className="flex flex-wrap justify-center gap-3">
+                        <div className="flex flex-wrap justify-center gap-2.5">
                             {filters.map((filterOption) => (
                                 <button
                                     key={filterOption.id}
                                     onClick={() => setFilter(filterOption.id)}
-                                    className={`px-4 py-2 rounded-xl font-medium transition-all duration-300 flex items-center space-x-2 border ${filter === filterOption.id
-                                            ? 'bg-blue-500 text-white'
-                                            : ' hover:bg-blue-500 hover:text-white'
-                                        }`}
+                                    className={`px-4 py-2 rounded-xl text-sm font-bold transition-all duration-200 border-2 border-black flex items-center space-x-2 ${
+                                        filter === filterOption.id
+                                            ? 'bg-blue-500 text-white shadow-[3px_3px_0_black]'
+                                            : 'bg-white text-black shadow-[3px_3px_0_black] hover:shadow-[3px_3px_0_#facc15] hover:-translate-y-0.5'
+                                    }`}
                                 >
                                     <span>{filterOption.name}</span>
-                                    <span className="text-xs bg-white/20 px-2 py-1 rounded-full">
+                                    <span className={`text-xs px-2 py-0.5 rounded-full font-bold ${
+                                        filter === filterOption.id ? 'bg-white/20 text-white' : 'bg-black/10 text-black'
+                                    }`}>
                                         {filterOption.count}
                                     </span>
                                 </button>
@@ -489,39 +497,9 @@ const Team = () => {
                 </div>
             </section>
 
-            {/*
-      <section className="py-20 ">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="space-y-6"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-white">
-              Want to Join Our{' '}
-              <span className="bg-gradient-to-r from-violet-400 to-electric-400 bg-clip-text text-transparent">
-                Amazing Team?
-              </span>
-            </h2>
-            <p className="text-xl text-gray-300 leading-relaxed">
-              We're always looking for passionate individuals who share our vision of innovation
-              and excellence in robotics. Join us and be part of something extraordinary.
-            </p>
-            <motion.button
-  whileHover={{ scale: 1.05 }}
-  whileTap={{ scale: 0.95 }}
-  className="px-8 py-4 bg-gradient-to-r from-violet-500 to-electric-500 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
-  onClick={() => navigate("/joinus")} // 👈 this line does the redirection
->
-  Apply to Join μCR
-</motion.button>
+            <Footer />
         </div>
-          </motion.div>
-      </section>*/}
-    </div>
-  );
+    );
 };
 
 export default Team;
